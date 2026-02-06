@@ -272,7 +272,7 @@ const Home = () => {
           </button>
 
           <a
-            href=""
+            href="https://github.com/Ruchit-thakkar/Arcade-Nexus-Modern-Web-Arcade-Platform.git"
             className="px-8 py-4 bg-slate-900/50 text-white font-semibold rounded-full border border-slate-700 hover:bg-slate-800 hover:border-slate-500 transition-all backdrop-blur-sm flex items-center gap-2"
           >
             <Github size={20} /> Source Code
