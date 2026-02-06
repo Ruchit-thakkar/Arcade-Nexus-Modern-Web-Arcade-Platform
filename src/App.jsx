@@ -81,7 +81,8 @@ const App = () => {
       />
 
       {/* --- Main Content --- */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[85vh]">
+      {/* FIX: Added pt-24 here to push content down because Navbar is now fixed */}
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-24 min-h-[85vh]">
         <Routes>
           <Route path="/" element={<Home />} />
           {GAMES.map((game) => (
@@ -179,13 +180,14 @@ const Navbar = ({ onSearchClick }) => {
   const isHome = location.pathname === "/";
 
   return (
-    <nav className="sticky top-0 z-40 border-b border-slate-800/60 bg-[#0f172a]/80 backdrop-blur-md supports-[backdrop-filter]:bg-[#0f172a]/60">
+    // FIX: Changed 'sticky' to 'fixed top-0 left-0 w-full'
+    <nav className="fixed top-0 left-0 w-full z-50 border-b border-slate-800/60 bg-[#0f172a]/80 backdrop-blur-md supports-[backdrop-filter]:bg-[#0f172a]/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo Section */}
         <Link to="/" className="flex items-center gap-3 group">
           <div className="relative w-8 h-8 md:w-10 md:h-10 group-hover:scale-105 transition-transform duration-200">
             <img
-              src="/logo.png"
+              src="https://ik.imagekit.io/devnext/test_Image/logo.png"
               alt="Logo"
               className="w-full h-full object-contain drop-shadow-lg"
             />
@@ -336,7 +338,7 @@ const SearchModal = ({ isOpen, onClose }) => {
 const NotFound = () => {
   return (
     <div className="relative flex flex-col items-center justify-center h-[70vh] text-center px-4 overflow-hidden">
-      {/* --- Background Binary Effect --- */}
+      {/* --- Background Binary Effect (Decorative) --- */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.03]">
         {Array.from({ length: 20 }).map((_, i) => (
           <div
@@ -356,14 +358,18 @@ const NotFound = () => {
 
       {/* --- Glitch Container --- */}
       <div className="relative mb-8 group">
+        {/* Massive 404 Text */}
         <h1 className="text-[120px] md:text-[180px] font-black text-slate-800 leading-none select-none tracking-tighter transition-colors group-hover:text-slate-800/50">
           404
         </h1>
+
+        {/* Floating "Level Not Found" Badge */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative bg-[#0f172a] border-2 border-rose-500/50 px-6 py-2 rounded-lg transform -rotate-6 shadow-[0_0_30px_rgba(244,63,94,0.2)] hover:rotate-0 hover:scale-110 transition-all duration-300">
             <span className="text-2xl md:text-4xl font-black text-rose-500 tracking-widest drop-shadow-[0_0_5px_rgba(244,63,94,0.8)]">
               LEVEL MISSING
             </span>
+            {/* Corner Accents */}
             <div className="absolute -top-1 -left-1 w-2 h-2 bg-rose-500" />
             <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-rose-500" />
           </div>
@@ -381,7 +387,9 @@ const NotFound = () => {
         to="/"
         className="group relative inline-flex items-center gap-3 px-8 py-4 bg-cyan-600 text-white font-bold rounded-xl overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(8,145,178,0.5)]"
       >
+        {/* Button Scanline Effect */}
         <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+
         <Gamepad2 className="w-6 h-6 group-hover:rotate-12 transition-transform" />
         <span className="tracking-wide text-lg">RESPAWN AT HOME</span>
       </Link>
